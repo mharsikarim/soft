@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>SOFT-PRO</title>
+
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons-->
+  <link href= "{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png'%}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+ <!-- Vendor CSS Files-->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css'%}" rel="stylesheet">
+  <link href="{% static 'vendor/animate.css/animate.min.css'%}" rel="stylesheet">
+  <link href="{%static 'vendor/aos/aos.css'%}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+  <link href="{%static 'vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+  <link href="{%static 'vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+
+  <!-- Template index CSS File -->
+<link rel="stylesheet" href="{% static 'css/index.css'%}">
+
+<style>
+
+.accueil {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.container1 {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+.container1::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.container1 img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.container1 img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+.time-left {
+  float: left;
+  color: #999;
+}
+</style>
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+</head>
+<body>
+ <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
+      <div class="align-items-center d-none d-md-flex">
+        <i class="bi bi-clock"></i>  Lundi- Vendredi, 8AM to 5PM
+      </div>
+      <div class="d-flex align-items-center">
+        <i class="bi bi-phone"></i> Num Tel: 93 805 626
+      </div>
+    </div>
+  </div>
+ <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+     <a href="index.html" class="logo me-auto"><img src="{% static 'img/softpro8001.png'%}" alt=""></a>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto " href="{% url 'index' %}">Acceuil</a></li>
+          <li><a class="nav-link scrollto" href="#about">Societé</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="#catalogue">catalogue</a></li>
+            <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+
+    </div>
+  </header><!-- End Header -->
+ <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+ <br>
+  <br>
+  <br>
+  <br>
+ <div class="accueil">
+<h2>{{room}}  </h2>
+
+<div id="display">
+
+</div>
+
+<script>
+$(document).ready(function(){
+
+setInterval(function(){
+    $.ajax({
+        type: 'GET',
+        url : "/getMessages/{{room}}/",
+        success: function(response){
+            console.log(response);
+            $("#display").empty();
+            for (var key in response.messages)
+            {
+                var temp="<div class='container1 darker'><b>To:"+response.messages[key].user+"</b><p>"+response.messages[key].value+"</p><span class='time-left'>"+response.messages[key].date+"</span></div>";
+                $("#display").append(temp);
+            }
+        },
+        error: function(response){
+            alert('An error occured')
+        }
+    });
+},1000);
+})
+</script>
+
+
+<div class="container1">
+    <style>
+     input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    }
+
+    input[type=submit] {
+    width: 100%;
+    background-color: #F28705;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+    background-color: #F28705;
+    }
+      .aaa {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    }
+
+
+    </style>
+
+    <form id="post-form" class="aaa">
+        {% csrf_token %}
+        <input type="hidden" name="username" id="username" value="{{username}}"/>
+        <input type="hidden" name="room_id" id="room_id" value="{{room_details}}"/>
+        <input type="text" name="message" id="message" width="100px" />
+        <input type="submit" value="Send">
+    </form>
+</div>
+</div>
+<!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info">
+              <h3>Soft-Pro</h3>
+              <p>
+                Appartement n: 15 , Imm.Ahlem Centre <br>Rue Med.Jamousi ,Sfax
+                <br><br>
+                <strong>Phone:</strong> +216 93 805 626<br>
+                <strong>Email:</strong> contact@softpro.com.tn<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Acceuil</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Societé</a></li>
+               <li><i class="bx bx-chevron-right"></i> <a href="#">catalogue</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Contact</a></li>
+
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Développement Web</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#"> Développement application Web</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Développement application mobile</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Solution de gestion commerciale</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Solution pour les assurances</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Solution de location de voitures / matériels</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#"> Solution pour cabine comptable</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#"> Développement spécifique</a></li>
+            </ul>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medicio-free-bootstrap-theme/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{%static 'vendor/purecounter/purecounter.js'%}"></script>
+  <script src="{%static 'vendor/aos/aos.js'%}"></script>
+  <script src="{%static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{%static 'vendor/glightbox/js/glightbox.min.js'%}"></script>
+  <script src="{%static 'vendor/swiper/swiper-bundle.min.js'%}"></script>
+  <script src="{%static 'vendor/php-email-form/validate.js'%}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{%static 'js/main.js'%}"></script>
+
+</body>
+
+<script type="text/javascript">
+  $(document).on('submit','#post-form',function(e){
+    e.preventDefault();
+
+    $.ajax({
+      type:'POST',
+      url:'/send',
+      data:{
+          username:$('#username').val(),
+          room_id:$('#room_id').val(),
+          message:$('#message').val(),
+        csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+      },
+      success: function(data){
+         //alert(data)
+      }
+    });
+    document.getElementById('message').value = ''
+  });
+</script>
+
+</html>

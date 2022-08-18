@@ -1,0 +1,64 @@
+{% extends 'main.html' %}
+{% block contenu %}
+<br>
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          class="img-fluid" alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        {% for message in messages%}
+				        <h3 class="link-danger"> {{ message}}</h3>
+        {% endfor %}
+
+
+
+            <form action="" method="POST">
+          {% csrf_token %}
+              <div class="input-group mb-3">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div>
+                <input type="text" name="email" placeholder="...@gmail.com" class="form-control">
+              </div>
+
+          <!-- Password input -->
+              <div class="input-group mb-2">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fas fa-key"></i></span>
+                </div>
+                <input type="password" name="password" placeholder="Mot de passe..." class="form-control" >
+              </div>
+
+
+
+
+          <div class="d-flex justify-content-between align-items-center">
+            <!-- Checkbox -->
+            <div class="form-check mb-0">
+              <input class="form-check-input me-2" type="checkbox"  value="" id="form2Example3" />
+              <label class="form-check-label" for="form2Example3">
+                Remember me
+              </label>
+            </div>
+            <a href="#!" class="text-body">Forgot password?</a>
+          </div>
+           <div class="d-flex justify-content-center mt-3 login_container">
+             <input class="btn login_btn" type="submit"   value="Accés">
+           </div>
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <p class="small fw-bold mt-2 pt-1 mb-0">Avez-vous un compte? <a href="{% url 'inscription' %}"
+                class="link-danger">crée un compte</a></p>
+          </div>
+
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+
+</section>
+{% endblock %}

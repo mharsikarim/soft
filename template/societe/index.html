@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <style>.menu{
+    margin-top: -100px;
+}
+
+.menu .contenu{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.menu .contenu .box{
+    width: 350px;
+    margin: 20px;
+    border: 20px solid #fff;
+    box-shadow: 20px 15px 35px rgba(0,0,0, 0.8);
+}
+
+.menu .contenu .box .imbox{
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+.menu .contenu .box .imbox img{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.menu .contenu .box .text{
+    text-align: center;
+    font-weight: 300px;
+    color: #111;
+}
+
+.menu .contenu .box .text h3{
+    font-weight: 400;
+}</style>
+
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>SOFT-PRO</title>
+
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons-->
+  <link href= "{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png'%}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+ <!-- Vendor CSS Files-->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css'%}" rel="stylesheet">
+  <link href="{% static 'vendor/animate.css/animate.min.css'%}" rel="stylesheet">
+  <link href="{%static 'vendor/aos/aos.css'%}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+  <link href="{%static 'vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+  <link href="{%static 'vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+
+  <!-- Template index CSS File -->
+<link rel="stylesheet" href="{% static 'css/index.css'%}">
+  <!-- =======================================================
+  * Template Name: Medicio - v4.7.0
+  * Template URL: https://bootstrapmade.com/medicio-free-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
+      <div class="align-items-center d-none d-md-flex">
+        <i class="bi bi-clock"></i> Lundi- Vendredi, 8AM to 5PM
+      </div>
+      <div class="d-flex align-items-center">
+        <i class="bi bi-phone"></i> Num Tel: 93 805 626
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <a href="index.html" class="logo me-auto"><img src="{% static 'img/softpro8001.png'%}" alt=""></a>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
+        {% include 'base/navbar.html' %}
+        {% block contenu%}
+        {% endblock %}
+        {% if request.user.is_authenticated %}
+          <a class="nav-link scrollto" href="{% url 'acceuil' %}">Client</a></li>
+          <a href="{% url 'logout' %}" class="appointment-btn scrollto"><span class="d-none d-md-inline"></span>Deconnexion</a>
+        {% else %}
+          <a href="{% url 'acces' %}" class="appointment-btn scrollto"><span class="d-none d-md-inline"></span>Connexion</a>
+        {% endif %}
+    </div>
+  </header><!-- End Header -->
+
+<!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+      <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+      <div class="carousel-inner" role="listbox">-->
+
+        <!-- Slide 1-->
+        <div class="carousel-item active" style="background-image: url(static/img/slide/info1.jpg)">
+          <div class="container">
+            <h2>Bienvenue <span>à SOFT-PRO</span></h2>
+            <p>c'est un entreprise qui  offre des solutions , des services , développement et vente logiciels. </p>
+            <a href="#about" class="btn-get-started scrollto">Read More</a>
+          </div>
+        </div>
+
+  <!-- Slide 2 -->
+        <div class="carousel-item" style="background-image: url(static/img/slide/info2.jpg)">
+          <div class="container">
+           <h2>Bienvenue <span>à SOFT-PRO</span></h2>
+              <p>c'est un entreprise qui  offre des solutions , des services , développement et vente logiciels. </p>
+            <a href="#about" class="btn-get-started scrollto">Read More</a>
+          </div>
+        </div>
+
+
+      </div>
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+      </a>
+
+    </div>
+  </section><!-- End Hero -->
+
+<!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Societé</h2>
+          <p> <span>SOFT-PRO</span> est une sociéte informatique crée en 2011, qui offrira un ensemble de service accessible a tous.</p>
+
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6" data-aos="fade-right">
+            <img src="static/img/about.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left">
+            <h3>Notre premiére objectif est la satisfaction du client ce qui est en liaison direct a la qualité du service. </h3>
+
+
+
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Us Section -->
+<!-- ======= Services Section ======= -->
+    <section id="services" class="services services">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Services</h2>
+          </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon"><i class="bi bi-pc-display-horizontal"></i></div>
+            <h4 class="title"><a href="">Développement Web</a></h4>
+              </div>
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon"><i class="bi bi-person-video3"></i></div>
+            <h4 class="title"><a href="">Développement application web</a></h4>
+            </div>
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon"><i class="bi bi-apple"></i></div>
+            <h4 class="title"><a href="">Développement application mobile</a></h4>
+             </div>
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon"><i class="bi bi-server"></i></div>
+            <h4 class="title"><a href="">Solution de gestion commercial</a></h4>
+           </div>
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon"><i class="bi bi-unlock-fill"></i></div>
+            <h4 class="title"><a href="">Solution pour les assurances</a></h4>
+             </div>
+
+
+           <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon"><i class="bi bi-wrench"></i></div>
+            <h4 class="title"><a href="">Développement spécifique</a></h4>
+           </div>
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+  <!-- ======= Doctors Section =======
+    <section id="doctors" class="doctors section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Catalogue</h2>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-8 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="100">
+              <div class="member-img">
+                <img src="{% static 'img/doctors/5.jfif' %}" class="img-fluid" alt="">
+                <div class="social">
+
+                  <a href=""><i class="bi bi-cart3"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Creation des site web </h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-8 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="200">
+              <div class="member-img">
+                <img src="{% static 'img/doctors/4.jfif' %}" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-cart3"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Gestion commercial</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-8 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="300">
+              <div class="member-img">
+                <img src="{% static 'img/doctors/2.png' %}" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-cart3"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>devellopement mobile</h4>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </section> End Doctors Section -->
+
+
+
+
+<section class="menu" id="menu">
+  <div class="container" >
+    <div class="row">
+      <div class="col-md-12">
+         <div class="section-title">
+          <h2>Catalogue</h2>
+        </div>
+        <div class="row">
+          {% for item in category %}
+          <div class="col-md-4">
+            <div class="card">
+              <a href="{% url 'collectionsviews' item.name %}">
+                  <div class="card-body">
+                      <div class="category-image">
+                       <img src="{{item.image.url}}"  alt="category-image" class="w-100" height="200px"/>
+                      </div>
+                   <div class="icon bi bi-cart3" style="font-size:20px;"> {{item.name}}</div>
+                </div>
+              </a>
+            </div>
+
+          </div>
+
+          {% endfor %}
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  </div>
+</section>
+
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+
+        </div>
+
+      </div>
+
+      <div>
+         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1159.284545861292!2d10.75425336708347!3d34.73160792990752!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13002de714fafaf3%3A0x61f902535ab8c8a6!2sSNPM%20OUTILLAGES!5e0!3m2!1sfr!2stn!4v1655900218215!5m2!1sfr!2stn" width="100%" height="350px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+      <div class="container">
+
+        <div class="row mt-5">
+
+          <div class="col-lg-12">
+
+            <div class="row" >
+              <div class="col-md-12">
+                <div class="info-box">
+                  <i class="bx bx-map"></i>
+                  <h3> Adresse :</h3>
+                  <p>Appartement n: 15 , Imm.Ahlem Centre, Rue Med.Jamousi ,Sfax</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box mt-4">
+                  <i class="bx bx-envelope"></i>
+                  <h3>Notre e-mail :</h3>
+                  <br>
+                  <p>contact@softpro.com.tn</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box mt-4">
+                  <i class="bx bx-phone-call"></i>
+                  <h3>Numéro du tel :</h3>
+                  <p>22 723 603<br>93 805 626</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info">
+              <h3>Soft-Pro</h3>
+              <p>
+                Appartement n: 15 , Imm.Ahlem Centre <br>Rue Med.Jamousi ,Sfax
+                <br><br>
+                <strong>Phone:</strong> +216 93 805 626<br>
+                <strong>Email:</strong> contact@softpro.com.tn<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Acceuil</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Présentation</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Développement Web</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#"> Développement application Web</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Développement application mobile</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Solution de gestion commerciale</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Solution pour les assurances</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Solution de location de voitures / matériels</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#"> Solution pour cabine comptable</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#"> Développement spécifique</a></li>
+            </ul>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medicio-free-bootstrap-theme/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{%static 'vendor/purecounter/purecounter.js'%}"></script>
+  <script src="{%static 'vendor/aos/aos.js'%}"></script>
+  <script src="{%static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{%static 'vendor/glightbox/js/glightbox.min.js'%}"></script>
+  <script src="{%static 'vendor/swiper/swiper-bundle.min.js'%}"></script>
+  <script src="{%static 'vendor/php-email-form/validate.js'%}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{%static 'js/main.js'%}"></script>
+
+
+</body>
+
+
+</html>
